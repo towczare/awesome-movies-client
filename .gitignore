@@ -5,7 +5,8 @@
 *.log
 
 # Idea config
-.iml
+*.iml
+.idea
 
 # BlueJ files
 *.ctxt
