@@ -10,7 +10,7 @@ public class AwesomeMoviesController {
 
     @RequestMapping("/")
     public String welcome(Map<String, Object> model) {
-        model.put("message", "stranger");
+        model.put("name", "stranger");
         return "welcome";
     }
 }

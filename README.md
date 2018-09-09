@@ -1,1 +1,1 @@
-# awesome-movies-client
+# Awesome Movies - Client
