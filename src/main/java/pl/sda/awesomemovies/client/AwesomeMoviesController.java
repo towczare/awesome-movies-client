@@ -1,4 +1,4 @@
-package pl.sda.awesomemoviesclient.awesomemoviesclient;
+package pl.sda.awesomemovies.client;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

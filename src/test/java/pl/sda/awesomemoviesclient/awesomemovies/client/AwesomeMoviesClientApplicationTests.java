@@ -1,4 +1,4 @@
-package pl.sda.awesomemoviesclient.awesomemoviesclient;
+package pl.sda.awesomemoviesclient.awesomemovies.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
