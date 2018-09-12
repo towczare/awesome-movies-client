@@ -1,1 +1,25 @@
 # Awesome Movies - Client
+
+Client for Awesome Movies project. No sexy js framework but, hey this is Java bootcamp!
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+* Java 1.8
+
+### Installing
+```
+./mvnw clean install 
+```
+### Run local version
+Configuration is stored in common file located:
+`awesome-movies-client\src\main\resources\application.properties`
+to run application use following command:
+```
+java -jar target/awesome-movies-client-0.0.1-SNAPSHOT.jar
+```
+### Run dev version
+To run application with `dev` profile:
+```
+java -jar target/awesome-movies-client-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+```
