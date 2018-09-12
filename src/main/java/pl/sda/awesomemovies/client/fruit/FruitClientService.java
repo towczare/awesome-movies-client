@@ -24,7 +24,7 @@ public class FruitClientService {
     public List<Fruit> getFruitsFromTestService() {
         try {
             Fruit[] fruits = fruitRestService.provide().getForObject(
-                    fruitRestService.getEndpointUrl() + "/fruit",
+                    fruitRestService.getEndpointUrl() + "/fruits",
                     Fruit[].class);
             return Arrays.asList(fruits);
         } catch (ResourceAccessException e) {
