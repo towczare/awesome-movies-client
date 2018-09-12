@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title>Spring Boot Thymeleaf Fruits</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" type="text/css"
@@ -14,10 +14,15 @@
 <body>
 <div class="container">
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h1>Spring Boot Web Thymeleaf Fruits</h1>
         <h2>
             <span th:text="'Hello ' + ${name}"></span>
         </h2>
+        <h2 th:if="${!fruits.isEmpty()}">Here is couple of fruits I got from test service:</h2>
+        <h2 th:if="${fruits.isEmpty()}">No fruits from test service.</h2>
+        <ul th:if="${!fruits.isEmpty()}">
+            <li th:each="fruit : ${fruits}" th:text="${fruit.name}" />
+        </ul>
     </div>
 </div>
 <script type="text/javascript"
