@@ -8,13 +8,16 @@ import java.util.List;
 @Service
 public class MovieClientService {
 
-    private List<Movie> moviesList = new ArrayList<>();
+    private static List<Movie> moviesList = new ArrayList<>();
 
-    public List<Movie> getAllMovies() {
+    static {
         moviesList.add(new Movie(1L, "Star Wars"));
         moviesList.add(new Movie(2L, "Star Trek"));
         moviesList.add(new Movie(3L, "Oblivion"));
         moviesList.add(new Movie(4L, "Avengers"));
+    }
+
+    public List<Movie> getAllMovies() {
         return moviesList;
     }
 
