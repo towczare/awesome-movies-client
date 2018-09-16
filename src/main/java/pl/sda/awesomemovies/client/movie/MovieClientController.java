@@ -11,20 +11,23 @@ public class MovieClientController {
 
     private final MovieClientService movieClientService;
 
+    private static final String MOVIE_DETAILS_VIEW = "movie-details-view";
+    private static final String MOVIES_VIEW = "movies-list";
+
     @Autowired
     public MovieClientController(MovieClientService movieClientService) {
         this.movieClientService = movieClientService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping({"/", "/movies"})
     public String getMovieList(Model model) {
         model.addAttribute("movies", movieClientService.getAllMovies());
-        return "movies";
+        return MOVIES_VIEW;
     }
 
-    @RequestMapping("/movie/{id}/show")
+    @RequestMapping("/movie/{id}")
     public String showMovieDetails(@PathVariable String id, Model model) {
         model.addAttribute("movie", movieClientService.getMovie(Long.valueOf(id)));
-        return "movie";
+        return MOVIE_DETAILS_VIEW;
     }
 }

@@ -36,7 +36,7 @@
                                 <td th:text="${movie.id}">334</td>
                                 <td th:text="${movie.name}">Terminator 3</td>
                                 <!-- Using a link with movie id attached to show this movie's page: -->
-                                <td><a th:href="@{'/movie/' + ${movie.id} + '/show' }">View</a></td>
+                                <td><a th:href="@{'/movie/' + ${movie.id}}">View</a></td>
 
                             </tr>
                         </table>

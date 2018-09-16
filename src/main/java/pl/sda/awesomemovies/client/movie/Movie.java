@@ -16,12 +16,5 @@ public class Movie {
 
     private Long id;
     private String name;
-//    private Category category;
-//    private Byte[] image;
-//    private Integer time;
-//    private LocalDate productionDate;
-//    private List<Actor> actors;
-//    private String description;
-//    private String review;
 
 }

@@ -1,41 +1,29 @@
 package pl.sda.awesomemovies.client.movie;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MovieClientService {
 
-    private final MovieRestService movieRestService;
-
-    @Autowired
-    public MovieClientService(MovieRestService movieRestService) {
-        this.movieRestService = movieRestService;
-    }
+    private List<Movie> moviesList = new ArrayList<>();
 
     public List<Movie> getAllMovies() {
-        try {
-            Movie[] movies = movieRestService.provide().getForObject(
-                    movieRestService.getEndpointUrl() + "/movies",
-                    Movie[].class);
-            return Arrays.asList(movies);
-        } catch (ResourceAccessException e) {
-            return Collections.emptyList();
-        }
+        moviesList.add(new Movie(1L, "Star Wars"));
+        moviesList.add(new Movie(2L, "Star Trek"));
+        moviesList.add(new Movie(3L, "Oblivion"));
+        moviesList.add(new Movie(4L, "Avengers"));
+        return moviesList;
     }
 
     public Movie getMovie(Long id) {
-        try {
-            return movieRestService.provide().getForObject(
-                    movieRestService.getEndpointUrl() + "/movie/" + id + "/show",
-                    Movie.class);
-        } catch (ResourceAccessException e) {
-            return new Movie();
+        for (Movie movie : moviesList) {
+            if (movie.getId().equals(id)) {
+                return movie;
+            }
         }
+        return null;
     }
 }

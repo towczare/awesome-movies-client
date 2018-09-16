@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class MovieRestService {
 
     private final RestTemplate restTemplate;
-    @Value("http://localhost:8080")
+    @Value("${movie.endpoint.url}")
     private String endpointUrl;
 
     @Autowired
