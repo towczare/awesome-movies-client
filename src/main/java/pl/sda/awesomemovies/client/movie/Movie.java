@@ -10,11 +10,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
 
     private Long id;
     private String name;
-
 }

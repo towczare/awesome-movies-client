@@ -9,7 +9,6 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-
 public class FilterCriteria {
 
     private String name;
