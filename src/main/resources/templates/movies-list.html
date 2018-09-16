@@ -16,12 +16,22 @@
     <div class="row">
         <!-- Divide the row section into 6 columns, and offset 3 - content will be centered -->
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-primary">
 
+
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h1 class="panel-title text-center">Movies list</h1>
+                    <h1 class="panel-title text-center">
+                        Movies list
+                    </h1>
+                    <form action="#" style="margin: 10px" th:action="@{/advancedSearch}" method="get">
+                        <button class="btn btn-info">Advanced Search</button>
+                    </form>
                 </div>
                 <div class="panel-body">
+                    <form action="#" style="margin: 10px" th:action="@{/filterMovies}" method="post">
+                        <input type="text" th:value="${String}" name="searchName" placeholder="Filter by name"/>
+                        <button type="submit" class="btn btn-info btn-xs">Filter Movies</button>
+                    </form>
                     <!-- Table will only be displayed if the list is not empty -->
                     <div class="table-responsive" th:if="${not #lists.isEmpty(movies)}">
                         <table class="table table-hover ">
