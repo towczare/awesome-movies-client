@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieClientService {
@@ -17,16 +18,33 @@ public class MovieClientService {
         moviesList.add(new Movie(4L, "Avengers"));
     }
 
-    public List<Movie> getAllMovies() {
+    List<Movie> getAllMovies() {
         return moviesList;
     }
 
-    public Movie getMovie(Long id) {
+    Movie getMovie(Long id) {
         for (Movie movie : moviesList) {
             if (movie.getId().equals(id)) {
                 return movie;
             }
         }
         return null;
+    }
+
+    List<Movie> filterMovies(String searchName) {
+        List<Movie> foundMovies = new ArrayList<>();
+        for (Movie movie : moviesList) {
+            if(movie.getName().toUpperCase().contains(searchName.toUpperCase())){
+                foundMovies.add(movie);
+            }
+        }
+        return foundMovies;
+    }
+
+    List<Movie> searchForMovies(FilterCriteria filterCriteria) {
+        return moviesList.stream().filter(e ->
+                e.getName().toUpperCase().contains(filterCriteria.getName().toUpperCase()))
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
