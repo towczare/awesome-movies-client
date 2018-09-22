@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Awesome Movies Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <!-- Divide the row section into 6 columns, and offset 3 - content will be centered -->
+        <div class="col-md-6 col-md-offset-3">
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">
+                        Movies list
+                    </h1>
+                    <form action="#" style="margin: 10px" th:action="@{/advancedSearch}" method="get">
+                        <button class="btn btn-info">Advanced Search</button>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <form action="#" style="margin: 10px" th:action="@{/filterMovies}" method="post">
+                        <input type="text" th:value="${String}" name="searchName" placeholder="Filter by name"/>
+                        <button type="submit" class="btn btn-info btn-xs">Filter Movies</button>
+                    </form>
+                    <!-- Table will only be displayed if the list is not empty -->
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(movies)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>View</th>
+                            </tr>
+                            </thead>
+                            <tr th:each="movie : ${movies}">
+                                <td th:text="${movie.id}">334</td>
+                                <td th:text="${movie.name}">Terminator 3</td>
+                                <!-- Using a link with movie id attached to show this movie's page: -->
+                                <td><a th:href="@{'/movie/' + ${movie.id}}">View</a></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
