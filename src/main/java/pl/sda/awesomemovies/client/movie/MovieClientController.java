@@ -13,7 +13,7 @@ public class MovieClientController {
     private final MovieClientService movieClientService;
 
     private static final String MOVIE_DETAILS_VIEW = "movie-details-view";
-    private static final String MOVIES_VIEW = "movies-list";
+    private static final String MOVIES_VIEW = "movies";
     private static final String MOVIES_SEARCH = "movie-search";
 
     @Autowired
