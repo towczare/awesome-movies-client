@@ -55,7 +55,7 @@ public class MovieClientService {
         return foundMovies;
     }
 
-    List<Movie> searchForMovies(FilterCriteria filterCriteria) {
+    public List<Movie> searchForMovies(FilterCriteria filterCriteria) {
         List<Movie> foundMovies = new ArrayList<>();
         getAllMovies().stream().filter(e ->
                 e.getTitle().toUpperCase().contains(filterCriteria.getName().toUpperCase())

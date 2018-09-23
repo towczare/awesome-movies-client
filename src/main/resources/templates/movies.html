@@ -29,7 +29,8 @@
             <p>Select genre:</p>
             <ul class="breadcrumb">
                 <li th:each="category:${categories}"><a th:href="@{'/categories/'+${category.name}}"
-                                                        th:text="${category.name}">#categoryName</a></li>
+                                                        th:text="${category.name}">#categoryName</a>
+                </li>
             </ul>
         </div>
     </div>
