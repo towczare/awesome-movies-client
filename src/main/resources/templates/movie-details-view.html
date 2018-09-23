@@ -18,7 +18,7 @@
             <div class="pannel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title" th:text="${movie.name}">Really awesome movie!</h1>
+                        <h1 class="panel-title" th:text="${movie.title}">Really awesome movie!</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -58,7 +58,7 @@
                                 <ul>
                                     <li th:remove="all">Bruce Willis</li>
                                     <li th:remove="all">Salma Hayek</li>
-                                    <!--<li th:each="actor : ${movie.actors}" th:text="${actor.name}">Chuck Norris</li>-->
+                                    <!--<li th:each="actor : ${movie.actors}" th:text="${actor.title}">Chuck Norris</li>-->
                                 </ul>
                             </div>
                         </div>

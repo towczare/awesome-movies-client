@@ -1,22 +1,17 @@
-package pl.sda.awesomemovies.client.movie;
+package pl.sda.awesomemovies.client.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.sda.awesomemovies.client.category.Category;
-
-import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Movie {
-
-    private Long id;
-    private String title;
-    private Set<Category> categories;
+public class Category {
+    private Integer id;
+    private String name;
 }

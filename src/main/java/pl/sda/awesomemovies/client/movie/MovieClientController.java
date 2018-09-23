@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.sda.awesomemovies.client.category.CategoryClientService;
 
 import java.util.List;
 
@@ -11,19 +12,22 @@ import java.util.List;
 public class MovieClientController {
 
     private final MovieClientService movieClientService;
+    private final CategoryClientService categoryClientService;
 
     private static final String MOVIE_DETAILS_VIEW = "movie-details-view";
     private static final String MOVIES_VIEW = "movies";
     private static final String MOVIES_SEARCH = "movie-search";
 
     @Autowired
-    public MovieClientController(MovieClientService movieClientService) {
+    public MovieClientController(MovieClientService movieClientService, CategoryClientService categoryClientService) {
         this.movieClientService = movieClientService;
+        this.categoryClientService = categoryClientService;
     }
 
     @RequestMapping({"/", "/movies"})
     public String getMovieList(Model model) {
         model.addAttribute("movies", movieClientService.getAllMovies());
+        model.addAttribute("categories", categoryClientService.getAllCategories());
         return MOVIES_VIEW;
     }
 
