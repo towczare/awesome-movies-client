@@ -22,7 +22,7 @@
                 <button class="btn btn-info">Advanced Search</button>
             </form>
             <form action="#" style="margin: 10px" th:action="@{/filterMovies}" method="post">
-                <input type="text" th:value="${String}" name="searchName" placeholder="Filter by name"/>
+                <input type="text" th:value="${String}" name="searchName" placeholder="Filter by title"/>
                 <button type="submit" class="btn btn-info btn-xs">Filter Movies</button>
             </form>
 
@@ -40,9 +40,11 @@
             <a th:href="@{'/movie/'+${movie.id}}">
                 <div class="card">
                     <img src="../../img/poster.jpg" style="width:100%">
-                    <h4><span th:text="${movie.name}">#movieName</span></h4>
+                    <h4><span th:text="${movie.title}">#movieName</span></h4>
                     <!--<p><span class="badge" th:text="${movie.rating}+'/10'">8.6/10</span></p>-->
-                    <!--<p><span th:text="${movie.category}">#categoryName</span></p>-->
+                    <ul class="breadcrumb" th:each="category:${movie.categories}">
+                        <li th:text="${category.name}">#categoryName</li>
+                    </ul>
                 </div>
             </a>
         </div>
