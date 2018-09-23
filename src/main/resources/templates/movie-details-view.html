@@ -18,15 +18,14 @@
             <div class="pannel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title" th:text="${movie.name}">Really awesome movie!</h1>
+                        <h1 class="panel-title" th:text="${movie.title}">Really awesome movie!</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-2">
                                 <h5>Categories:</h5>
-                                <ul>
-                                    <li th:remove="all">comedy</li>
-                                    <li th:remove="all">drama</li>
+                                <ul th:each="category:${movie.categories}">
+                                    <li th:text="${category.name}"></li>
                                 </ul>
                             </div>
                             <div class="col-md-2">
@@ -54,11 +53,15 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3">
+                                <h5>Director:
+                                    <span th:text="${movie.director}">Director</span>
+                                </h5>
+                                <div class="col-md-6">
                                 <ul>
                                     <li th:remove="all">Bruce Willis</li>
                                     <li th:remove="all">Salma Hayek</li>
-                                    <!--<li th:each="actor : ${movie.actors}" th:text="${actor.name}">Chuck Norris</li>-->
+                                    <!--<li th:each="actor : ${movie.actors}" th:text="${actor.title}">Chuck Norris</li>-->
                                 </ul>
                             </div>
                         </div>

@@ -12,4 +12,5 @@ import lombok.ToString;
 public class FilterCriteria {
 
     private String name;
+    private String category;
 }

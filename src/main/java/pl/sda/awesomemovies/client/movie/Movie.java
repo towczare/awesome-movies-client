@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.sda.awesomemovies.client.category.Category;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,5 +17,7 @@ import lombok.Setter;
 public class Movie {
 
     private Long id;
-    private String name;
+    private String title;
+    private String director;
+    private Set<Category> categories;
 }
