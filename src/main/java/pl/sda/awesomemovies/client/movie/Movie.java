@@ -20,4 +20,6 @@ public class Movie {
     private String title;
     private String director;
     private Set<Category> categories;
+    private String posterLink;
+    private String movieTrailer;
 }
