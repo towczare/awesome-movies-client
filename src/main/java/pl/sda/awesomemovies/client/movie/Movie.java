@@ -1,6 +1,7 @@
 package pl.sda.awesomemovies.client.movie;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,6 @@ public class Movie {
     private String director;
     private Set<Category> categories;
     private String posterLink;
+    @JsonProperty("trailerUrl")
     private String movieTrailer;
 }
