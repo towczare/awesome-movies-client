@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.sda.awesomemovies.client.category.Category;
 import pl.sda.awesomemovies.client.category.CategoryClientService;
 
 import java.util.List;
@@ -24,10 +25,15 @@ public class MovieClientController {
         this.categoryClientService = categoryClientService;
     }
 
+    @ModelAttribute("categories")
+    public List<Category> categories() {
+        return categoryClientService.getAllCategories();
+    }
+
     @RequestMapping({"/", "/movies"})
     public String getMovieList(Model model) {
         model.addAttribute("movies", movieClientService.getAllMovies());
-        model.addAttribute("categories", categoryClientService.getAllCategories());
+        model.addAttribute("filterCriteria", new FilterCriteria());
         return MOVIES_VIEW;
     }
 

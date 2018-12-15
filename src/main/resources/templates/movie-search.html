@@ -28,6 +28,18 @@
                             <td><label>Movie title: </label></td>
                             <td><input type="text" th:field="*{name}" placeholder="Title"/></td>
                         </tr>
+                        <tr>
+                            <td><label>Movie category: </label></td>
+                            <td><select name="text" th:field="*{category}">
+                                <option value="komedia">Komedia</option>
+                                <option value="horror">Horror</option>
+                                <option value="akcja">Akcja</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="bajka">Bajka</option>
+                                <option value="dramat">Dramat</option>
+                                <option value="SCI-FI">SCI-FI</option>
+                            </select></td>
+                        </tr>
                         </tbody>
                     </table>
                     <button class="btn btn-info btn-sm" type="submit">Search</button>

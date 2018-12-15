@@ -29,7 +29,8 @@
             <p>Select genre:</p>
             <ul class="breadcrumb">
                 <li th:each="category:${categories}"><a th:href="@{'/categories/'+${category.name}}"
-                                                        th:text="${category.name}">#categoryName</a></li>
+                                                        th:text="${category.name}">#categoryName</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -39,7 +40,7 @@
         <div class="col-sm6" th:each="movie:${movies}">
             <a th:href="@{'/movie/'+${movie.id}}">
                 <div class="card">
-                    <img src="../../img/poster.jpg" style="width:100%">
+                    <img th:src="${movie.posterLink}" style="width:100%">
                     <h4><span th:text="${movie.title}">#movieName</span></h4>
                     <!--<p><span class="badge" th:text="${movie.rating}+'/10'">8.6/10</span></p>-->
                     <ul class="breadcrumb" th:each="category:${movie.categories}">
