@@ -6,51 +6,149 @@
     <title>List of all movies</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/custom-css-bootstrap-magic-2018-09-155.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/ie-support/html5.js"></script>
+    <script src="js/ie-support/respond.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="page-header">
-        <h1>List of all movies</h1>
-    </div>
+<div id="site-content">
 
-    <div class="row">
-        <div class="container">
-            <form action="#" style="margin: 10px" th:action="@{/advancedSearch}" method="get">
-                <button class="btn btn-info">Advanced Search</button>
-            </form>
-            <form action="#" style="margin: 10px" th:action="@{/filterMovies}" method="post">
-                <input type="text" th:value="${String}" name="searchName" placeholder="Filter by title"/>
-                <button type="submit" class="btn btn-info btn-xs">Filter Movies</button>
-            </form>
-
-            <p>Select genre:</p>
-            <ul class="breadcrumb">
-                <li th:each="category:${categories}"><a th:href="@{'/categories/'+${category.name}}"
-                                                        th:text="${category.name}">#categoryName</a>
-                </li>
-            </ul>
+    <div class="container">
+        <div class="page-header">
+            <h1 align="center">List of all movies</h1>
         </div>
-    </div>
 
 
-    <div class="row">
-        <div class="col-sm6" th:each="movie:${movies}">
-            <a th:href="@{'/movie/'+${movie.id}}">
-                <div class="card">
-                    <img th:src="${movie.posterLink}" style="width:100%">
-                    <h4><span th:text="${movie.title}">#movieName</span></h4>
-                    <!--<p><span class="badge" th:text="${movie.rating}+'/10'">8.6/10</span></p>-->
-                    <ul class="breadcrumb" th:each="category:${movie.categories}">
-                        <li th:text="${category.name}">#categoryName</li>
-                    </ul>
+        <header class="site-header">
+            <div class="container">
+                <a href="movies.html" id="branding">
+                    <img src="images/ProjGrupLogo.png" alt="" class="logo" style="width:30%">
+                    <div class="logo-copy">
+                        <h1 class="site-title">Company Name</h1>
+                        <small class="site-description">Tagline goes here</small>
+                    </div>
+                </a> <!-- #branding -->
+
+                <div class="main-navigation">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <li class="menu-item current-menu-item"><a href="movies.html">Home</a></li>
+                        <li class="menu-item"><a href="movie-details-view.html">details</a></li>
+                        <li class="menu-item"><a href="review.html" th:action="@{/filterMovies}" method="post">Movie
+                            reviews</a></li>
+
+
+                    </ul> <!-- .menu -->
+                    <!--<div class="row">-->
+                    <!--<div class="container">-->
+                    <!--<form action="#" style="margin: 10px" th:action="@{/advancedSearch}" method="get">-->
+                    <!--<button class="btn btn-info">Advanced Search</button>-->
+                    <!--</form>-->
+                    <!--<form action="#" style="margin: 10px" th:action="@{/filterMovies}" method="post">-->
+                    <!--<input type="text" th:value="${String}" name="searchName" placeholder="Filter by title"/>-->
+                    <!--<button type="submit" class="btn btn-info btn-xs">Filter Movies</button>-->
+                    <!--</form>-->
+
+                    <!--<p>Select genre:</p>-->
+                    <!--<ul class="breadcrumb">-->
+                    <!--<li th:each="category:${categories}"><a th:href="@{'/categories/'+${category.name}}"-->
+                    <!--th:text="${category.name}">#categoryName</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <form action="#" class="search-form" style="margin: 10px" th:action="@{/advancedSearch}"
+                          method="get">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit" class="btn btn-info btn-xs"><i class="fa fa-search"></i></button>
+                    </form>
+                </div> <!-- .main-navigation -->
+
+                <div class="mobile-navigation"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="page">
+                    <div class="row">
+
+                        <div class="col-md-9">
+                            <div class="slider">
+                                <ul class="slides">
+
+                                    <li class="">
+                                        <a href="#">
+
+                                            <img src="https://1.fwcdn.pl/po/35/97/163597/7521197.3.jpg">
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="#">
+                                            <img src="https://i.wpimg.pl/O/426x597/d.wpimg.pl/121630178--39009075/dark-netflix.jpg"
+                                                 alt="Slide 2">
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#"><img
+                                                src="https://cnet1.cbsistatic.com/img/emOYHWMeciApZd1E1hqYgRtnSKU=/970x0/2017/09/14/a30137c6-3835-44bc-9dd6-c8eef8a69bd5/strangerthingsjaws.jpg"
+                                                alt="Slide 3"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-12">
+                                    <div class="latest-movie">
+                                        <a href="#"><img
+                                                src="https://ocdn.eu/pulscms-transforms/1/zflktkqTURBXy9jNmRhN2JlMjUxMDEzMmI4Y2QwYjI0NjU1NzcxMTAzNy5qcGVnkZMFzQEszQG4"
+                                                style="width: 100%;" alt="Movie 1"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-12">
+                                    <div class="latest-movie">
+                                        <a href="#"><img src="http://www.efilmy.tv/uploads/serials/serial_411.jpg"
+                                                         style="width: 100%;" alt="Movie 2"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-            </a>
-        </div>
+            </div>
+
+
+            <!--<div class="row">-->
+                <!--<div class="col-sm6" th:each="movie:${movies}">-->
+                    <!--<div th:if="movieStat">-->
+                        <!--<a th:href="@{'/movie/'+${movie.id}}">-->
+                            <!--<div class="card">-->
+
+
+                                <!--<img th:src="${movie.posterLink}" style="width:65%">-->
+                                <!--<h4><span th:text="${movie.title}">#movieName</span></h4>-->
+                                <!--&lt;!&ndash;<p><span class="badge" th:text="${movie.rating}+'/10'">8.6/10</span></p>&ndash;&gt;-->
+                                <!--<ul class="breadcrumb" th:each="category:${movie.categories}">-->
+                                    <!--<li th:text="${category.name}">#categoryName</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </main>
     </div>
 </div>
-
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
