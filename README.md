@@ -26,3 +26,16 @@ To run application with `dev` profile:
 ```
 java -jar target/awesome-movies-client-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
+
+### Acessing babun terminal via InteliJ
+1. Edit/Create following file `embed.bat` located `C:\Users\tomic\.babun`
+```
+@echo off
+
+c:
+chdir C:\Users\tomic\.babun\cygwin\bin
+
+bash --login -i
+```
+2. Set terminal to call embed.bat file
+![GitHub Logo](/images/babun3.png)
