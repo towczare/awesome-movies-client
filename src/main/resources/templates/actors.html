@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all movies</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/custom-css-bootstrap-magic-2018-09-155.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>List of all actors</h1>
+    </div>
+    <div class="row">
+        <div class="container">
+            <form action="#" style="margin: 10px" method="get">
+                <button class="btn btn-info">Advanced Search</button>
+            </form>
+            <form action="#" style="margin: 10px" method="post">
+                <input type="text" name="searchName" placeholder="Filter by ..."/>
+                <button type="submit" class="btn btn-info btn-xs">Filter Actors</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm6" th:each="actor:${actors}">
+            <a th:href="@{'/actors/'+${actor.id}}">
+                <div class="card">
+                    <img src="https://i.ibb.co/MCsZwJp/shakespeare-hamlet-1.png" alt="shakespeare-hamlet-1" border="0"
+                         style="width:80%"/>
+                    <h4><span th:text="${actor.getName()}"></span></h4>
+                    <h4><span th:text="${actor.getSurname()}"></span></h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
