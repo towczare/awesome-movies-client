@@ -29,7 +29,6 @@ public class ActorClientController {
 
     @RequestMapping("/actors")
     public String getActorsList(Model model) {
-        //   model.addAttribute("actors", actorClientService.getAllActors());
         return ACTORS_VIEW;
     }
 
