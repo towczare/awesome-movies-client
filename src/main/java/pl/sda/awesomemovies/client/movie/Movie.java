@@ -26,4 +26,17 @@ public class Movie {
     private Double criticsRate;
     private Integer thumbUp;
     private Integer thumbDown;
+
+    public Double thumbUpPercentage(){
+        int sum = thumbUp + thumbDown;
+        return Double.valueOf(thumbUp*100 / sum);
+
+    }
+
+    public Double thumbDownPercentage(){
+        int sum = thumbUp + thumbDown;
+      return Double.valueOf(thumbDown *100/sum);
+    }
+
+
 }
