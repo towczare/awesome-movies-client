@@ -23,6 +23,7 @@ public class Movie {
     private String posterLink;
     @JsonProperty("trailerUrl")
     private String movieTrailer;
+    private Double criticsRate;
     private Integer thumbUp;
     private Integer thumbDown;
 }

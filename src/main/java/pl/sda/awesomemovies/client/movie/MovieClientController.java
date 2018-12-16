@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 public class MovieClientController {
     private final MovieClientService movieClientService;
     private final CategoryClientService categoryClientService;
+
+    private static final String MOVIE_LIST = "movie-list";
     private static final String MOVIE_DETAILS_VIEW = "movie-details-view";
     private static final String MOVIES_VIEW = "movies";
     private static final String MOVIES_SEARCH = "movie-search";
@@ -31,13 +33,19 @@ public class MovieClientController {
     public List<Category> categories() {
         return categoryClientService.getAllCategories();
     }
+    @RequestMapping({"/"})
+    public String getMoviesView(Model model){
+        model.addAttribute("movies", movieClientService.getAllMovies());
+        model.addAttribute("filterCriteria", new FilterCriteria());
+        return MOVIES_VIEW;
+    }
 
-    @RequestMapping({"/", "/movies"})
+    @RequestMapping({"/movielist"})
     public String getMovieList(Pageable pageable, Model model) {
         Page<Movie> allMovies = movieClientService.getAllMovies(pageable);
         model.addAttribute("movies", allMovies.getContent());
         model.addAttribute("filterCriteria", new FilterCriteria());
-        return MOVIES_VIEW;
+        return MOVIE_LIST;
     }
 
     @RequestMapping("/movie/{id}")
@@ -50,7 +58,7 @@ public class MovieClientController {
     public String filterMovies(@RequestParam String searchName, Model model) {
         List<Movie> filteredMovies = movieClientService.filterMovies(searchName);
         model.addAttribute("movies", filteredMovies);
-        return MOVIES_VIEW;
+        return MOVIE_LIST;
     }
 
     @GetMapping("/advancedSearch")
@@ -60,7 +68,7 @@ public class MovieClientController {
     }
 
     @PostMapping("/advancedSearch")
-    public String searchForMovies(@ModelAttribute FilterCriteria filterCriteria, Model model) {
+    public String searchForMovies(@ModelAttribute FilterCriteria filterCriteria, Model model){
         List<Movie> movies = movieClientService.searchForMovies(filterCriteria);
         model.addAttribute("movies", movies);
         return MOVIES_VIEW;
