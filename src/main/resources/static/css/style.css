@@ -52,6 +52,9 @@ textarea {
 }
 
 body {
+    background-image: url(http://images.pond5.com/film-projector-lens-and-light-footage-024706786_prevstill.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
 }
 
@@ -68,7 +71,8 @@ a:hover, a:active {
 }
 
 h1 {
-    font-size: 2em;
+    font-family: "SF Movie Poster";
+    font-size: 3.0em;
     margin: 0.67em 0;
 }
 
@@ -261,15 +265,16 @@ table {
  */
 body {
     background-color: #131a20;
-    background-image: url(http://images.pond5.com/film-projector-lens-and-light-footage-024706786_prevstill.jpeg);
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
     color: #84878d;
     font-family: "Roboto", "Open Sans", sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: normal;
+
+    background-image: url(http://images.pond5.com/film-projector-lens-and-light-footage-024706786_prevstill.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -339,7 +344,8 @@ form textarea {
 .slider {
     position: relative;
     margin-bottom: 30px;
-
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .slider .slides {
@@ -368,7 +374,6 @@ form textarea {
     display: block;
     overflow: hidden;
     background-attachment: fixed;
-    float: top;
     margin-left: auto;
     margin-right: auto;
 
@@ -735,7 +740,7 @@ ul.arrow li a:hover {
     display: block;
     overflow: hidden;
     height: 0;
-    opacity: 0.5;
+
 }
 
 @media (min-width: 768px) {
@@ -776,6 +781,10 @@ ul.arrow li a:hover {
     margin-left: -15px;
     margin-right: -15px;
     *zoom: 1;
+
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
 .row:after {
@@ -791,6 +800,8 @@ ul.arrow li a:hover {
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
+    width: 100%;
+
 }
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
@@ -1214,6 +1225,8 @@ ul.arrow li a:hover {
 
 @media (min-width: 992px) {
     .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+        margin-left: auto;
+        margin-right: auto;
         float: left;
     }
 
@@ -1251,6 +1264,8 @@ ul.arrow li a:hover {
 
     .col-md-9 {
         width: 75%;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .col-md-10 {
@@ -2095,10 +2110,10 @@ ul.arrow li a:hover {
 }
 
 .main-content .container {
-    background: white;
+    background-color: rgba(255, 255, 255, 0.3);;
     border-radius: 5px;
     padding: 30px;
-    opacity: 0.5;
+
 
 }
 
@@ -2360,13 +2375,47 @@ crop {
     width: 825px;
     overflow: hidden;
 }
-crop img{
+
+crop img {
     height: 491px;
     width: 825px;
     margin: -75px 0 0 -100px;
 
 }
-.wrapper{
 
-
+.tomovielist {
+    width: 30%;
+    height: 75%;
+    background-color: white;
+    margin-top: 3%;
+    margin-bottom: 25%;
+    margin-right: auto;
+    float: left;
+    text-transform: uppercase;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    display: block;
 }
+
+
+.card {
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    margin: 20px;
+    text-align: center;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.breadcrumb {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+
