@@ -16,7 +16,6 @@ import java.util.Set;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
-
     private Long id;
     private String title;
     private String director;
@@ -25,4 +24,6 @@ public class Movie {
     @JsonProperty("trailerUrl")
     private String movieTrailer;
     private Double criticsRate;
+    private Integer thumbUp;
+    private Integer thumbDown;
 }

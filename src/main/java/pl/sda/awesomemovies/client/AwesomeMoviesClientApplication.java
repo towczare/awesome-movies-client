@@ -8,13 +8,12 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class AwesomeMoviesClientApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AwesomeMoviesClientApplication.class, args);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(AwesomeMoviesClientApplication.class, args);
-	}
-
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
 }

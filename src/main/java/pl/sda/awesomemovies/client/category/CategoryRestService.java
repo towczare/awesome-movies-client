@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class CategoryRestService {
-
     private final RestTemplate restTemplate;
     @Value("${movie.endpoint.url}")
     private String endpointUrl;
