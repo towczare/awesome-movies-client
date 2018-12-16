@@ -14,9 +14,7 @@ import java.util.List;
 
 @Service
 public class MovieClientService {
-
     private MovieRestService movieRestService;
-
 
     @Autowired
     public MovieClientService(MovieRestService movieRestService) {
@@ -27,11 +25,10 @@ public class MovieClientService {
         return movieRestService.getMovies(pageable);
     }
 
-   List<Movie> getAllMovies() {
-
+    List<Movie> getAllMovies() {
         try {
             Movie[] getMovies = movieRestService.provide().getForObject(
-                    movieRestService.getEndpointUrl() + "/getMovies",
+                    movieRestService.getEndpointUrl() + "/movies",
                     Movie[].class
             );
             return Arrays.asList(getMovies);

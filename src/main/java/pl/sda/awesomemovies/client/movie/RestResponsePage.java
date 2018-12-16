@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Data
 public class RestResponsePage<T> extends PageImpl<T> {
     private int number;

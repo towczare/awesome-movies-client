@@ -16,7 +16,6 @@ import java.net.URI;
 
 @Component
 public class MovieRestService {
-
     private final RestTemplate restTemplate;
     @Value("${movie.endpoint.url}")
     private String endpointUrl;
@@ -28,22 +27,19 @@ public class MovieRestService {
                 .build();
     }
 
-    public Page<Movie> getMovies(Pageable pageable){
+    public Page<Movie> getMovies(Pageable pageable) {
         ParameterizedTypeReference<RestResponsePage<Movie>> ptr =
-                new ParameterizedTypeReference<RestResponsePage<Movie>>(){};
-
-
-        URI targetUrl= UriComponentsBuilder.fromUriString(endpointUrl)
+                new ParameterizedTypeReference<RestResponsePage<Movie>>() {
+                };
+        URI targetUrl = UriComponentsBuilder.fromUriString(endpointUrl)
                 .path("/movies")
                 .queryParam("page", pageable.getPageNumber())
                 .queryParam("size", pageable.getPageSize())
-                .queryParam("sort", pageable.getSort())
+                // .queryParam("sort", pageable.getSort())
                 .build()
                 .toUri();
-
         return restTemplate.exchange(targetUrl, HttpMethod.GET, null, ptr).getBody();
     }
-
 
     public RestTemplate provide() {
         return restTemplate;

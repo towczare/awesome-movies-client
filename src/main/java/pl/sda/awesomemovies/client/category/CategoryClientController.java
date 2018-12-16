@@ -14,10 +14,8 @@ import java.util.List;
 
 @Controller
 public class CategoryClientController {
-
     private final CategoryClientService categoryClientService;
     private final MovieClientService movieClientService;
-
     private static final String MOVIES_BY_CATEGORY = "getMovies";
 
     @Autowired
@@ -26,7 +24,7 @@ public class CategoryClientController {
         this.movieClientService = movieClientService;
     }
 
-    @ModelAttribute("categories")
+   /* @ModelAttribute("categories")
     public List<Category> categories() {
         return categoryClientService.getAllCategories();
     }
@@ -39,5 +37,5 @@ public class CategoryClientController {
         List<Movie> movies = movieClientService.searchForMovies(categoryFilter);
         model.addAttribute("movies", movies);
         return MOVIES_BY_CATEGORY;
-    }
+    }*/
 }
