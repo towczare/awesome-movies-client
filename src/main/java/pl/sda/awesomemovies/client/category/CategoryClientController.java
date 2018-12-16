@@ -24,7 +24,7 @@ public class CategoryClientController {
         this.movieClientService = movieClientService;
     }
 
-   /* @ModelAttribute("categories")
+    @ModelAttribute("categories")
     public List<Category> categories() {
         return categoryClientService.getAllCategories();
     }
@@ -37,5 +37,5 @@ public class CategoryClientController {
         List<Movie> movies = movieClientService.searchForMovies(categoryFilter);
         model.addAttribute("movies", movies);
         return MOVIES_BY_CATEGORY;
-    }*/
+    }
 }
