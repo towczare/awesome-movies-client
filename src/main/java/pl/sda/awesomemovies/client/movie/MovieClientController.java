@@ -1,11 +1,14 @@
 package pl.sda.awesomemovies.client.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.awesomemovies.client.category.Category;
 import pl.sda.awesomemovies.client.category.CategoryClientService;
+
 
 import java.util.List;
 
@@ -16,7 +19,7 @@ public class MovieClientController {
     private final CategoryClientService categoryClientService;
 
     private static final String MOVIE_DETAILS_VIEW = "movie-details-view";
-    private static final String MOVIES_VIEW = "movies";
+    private static final String MOVIES_VIEW = "getMovies";
     private static final String MOVIES_SEARCH = "movie-search";
 
     @Autowired
@@ -31,8 +34,8 @@ public class MovieClientController {
     }
 
     @RequestMapping({"/", "/movies"})
-    public String getMovieList(Model model) {
-        model.addAttribute("movies", movieClientService.getAllMovies());
+    public String getMovieList(Pageable pageable, Model model) {
+        model.addAttribute("movies", movieClientService.getAllMovies(pageable));
         model.addAttribute("filterCriteria", new FilterCriteria());
         return MOVIES_VIEW;
     }

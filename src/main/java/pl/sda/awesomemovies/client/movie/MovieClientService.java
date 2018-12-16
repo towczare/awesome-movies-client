@@ -1,6 +1,8 @@
 package pl.sda.awesomemovies.client.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import pl.sda.awesomemovies.client.category.Category;
@@ -15,18 +17,24 @@ public class MovieClientService {
 
     private MovieRestService movieRestService;
 
+
     @Autowired
     public MovieClientService(MovieRestService movieRestService) {
         this.movieRestService = movieRestService;
     }
 
-    List<Movie> getAllMovies() {
+    Page<Movie> getAllMovies(Pageable pageable) {
+        return movieRestService.getMovies(pageable);
+    }
+
+   List<Movie> getAllMovies() {
+
         try {
-            Movie[] movies = movieRestService.provide().getForObject(
-                    movieRestService.getEndpointUrl() + "/movies",
+            Movie[] getMovies = movieRestService.provide().getForObject(
+                    movieRestService.getEndpointUrl() + "/getMovies",
                     Movie[].class
             );
-            return Arrays.asList(movies);
+            return Arrays.asList(getMovies);
         } catch (RestClientException e) {
             e.printStackTrace();
             return Collections.emptyList();
