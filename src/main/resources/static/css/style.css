@@ -52,7 +52,7 @@ textarea {
 }
 
 body {
-    background-image: url(http://images.pond5.com/film-projector-lens-and-light-footage-024706786_prevstill.jpeg);
+    background-image: url("../../images/felix-mooneeram-222805-unsplash.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;
@@ -74,30 +74,40 @@ h1 {
     font-family: "SF Movie Poster";
     src: url("https://www.dafont.com/sf-movie-poster.font");
     font-size: 3.0em;
-    margin: 0.67em 0;
+    /*margin: 0.67em 0;*/
 }
 
 h2 {
-    font-size: 1.5em;
+    font-family: "SF Movie Poster";
+    src: url("https://www.dafont.com/sf-movie-poster.font");
+    font-size: 2.5em;
     margin: 0.83em 0;
 }
 
 h3 {
-    font-size: 1.17em;
+    font-family: "SF Movie Poster";
+    src: url("https://www.dafont.com/sf-movie-poster.font");
+    font-size: 2.17em;
     margin: 1em 0;
 }
 
 h4 {
-    font-size: 1em;
-    margin: 1.33em 0;
+    font-family: "SF Movie Poster";
+    src: url("https://www.dafont.com/sf-movie-poster.font");
+    font-size: 2em;
+    margin: 1.9em 0;
 }
 
 h5 {
-    font-size: 0.83em;
+    font-family: "SF Movie Poster";
+    src: url("https://www.dafont.com/sf-movie-poster.font");
+    font-size: 1.83em;
     margin: 1.67em 0;
 }
 
 h6 {
+    font-family: "SF Movie Poster";
+    src: url("https://www.dafont.com/sf-movie-poster.font");
     font-size: 0.75em;
     margin: 2.33em 0;
 }
@@ -271,10 +281,9 @@ body {
     font-size: 15px;
     font-weight: 400;
     line-height: normal;
-
-    background-image: url(http://images.pond5.com/film-projector-lens-and-light-footage-024706786_prevstill.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url("../../images/felix-mooneeram-222805-unsplash.jpg");
+    background-size: 100%;
+    background-repeat: repeat-y;
     margin: 0;
 }
 
@@ -307,11 +316,10 @@ p {
 }
 
 form input, form textarea, form select {
+    color: rgba(255, 255, 255, 0.42);
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc42;
     padding: 10px;
-    border-radius: 5px;
-    outline: none;
 }
 
 form select {
@@ -329,14 +337,14 @@ form textarea {
  */
 .button, form input[type="submit"], form button, form input[type="reset"], .contact-form input[type="submit"] {
     border: none;
-    background: #ffaa3c;
+    background: rgba(109, 109, 109, 0.35);
     padding: 10px;
-    border-radius: 3px;
-    color: #92601e;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    /* border-radius: 3px; */
+    color: #000000;
     -webkit-transition: .3s ease;
     transition: .3s ease;
 }
+
 
 .button:hover, form input[type="submit"]:hover, form button:hover, form input[type="reset"]:hover, .contact-form input[type="submit"]:hover, .button:focus, form input[type="submit"]:focus, form button:focus, form input[type="reset"]:focus, .contact-form input[type="submit"]:focus {
     background-color: #ffc06f;
@@ -352,6 +360,7 @@ form textarea {
 .slider .slides {
     list-style: none;
     *zoom: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .slider .slides:after {
@@ -389,16 +398,16 @@ form textarea {
 }
 
 .slider .flex-direction-nav a {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: url(https://flowfreesolutions.com/images/right_arrow_50.png);
+
     text-align: center;
     line-height: 2.5;
     font-size: 18px;
     font-size: 1.2em;
     display: block;
-    position: absolute;
+    position: fixed;
     -webkit-transition: .3s ease;
     transition: .3s ease;
 }
@@ -409,11 +418,14 @@ form textarea {
 }
 
 .slider .flex-direction-nav .flex-prev {
+    background: url(https://flowfreesolutions.com/images/right_arrow_50.png);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    transform: rotate(180deg);
     left: 30px;
 }
 
 .slider .flex-direction-nav .flex-next {
-
+    background: url(https://flowfreesolutions.com/images/right_arrow_50.png);
     right: 30px;
 }
 
@@ -1950,7 +1962,7 @@ ul.arrow li a:hover {
 
 .main-navigation {
     float: right;
-    background: white;
+    background: transparent;
     border-radius: 5px;
 }
 
@@ -2371,18 +2383,6 @@ ul.arrow li a:hover {
     padding-top: 30px;
 }
 
-crop {
-    height: 491px;
-    width: 825px;
-    overflow: hidden;
-}
-
-crop img {
-    height: 491px;
-    width: 825px;
-    margin: -75px 0 0 -100px;
-
-}
 
 .tomovielist {
     width: 30%;
@@ -2390,16 +2390,17 @@ crop img {
     background-color: white;
     margin-top: 3%;
     margin-right: auto;
-    float: left;
+
     text-transform: uppercase;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 .card {
-    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     max-width: 200px;
     margin: 20px;
     text-align: center;
@@ -2421,17 +2422,21 @@ crop img {
 }
 
 .genres-navbar {
-    background-color: rgba(96, 60, 32, 0.3);
-    width: 10%;
+    background-color: rgba(96, 59, 23, 0.3);
+    width: 95%;
     height: auto;
-
-
 }
-.fixed{
+
+.fixed {
     position: fixed;
     overflow: auto;
-    float: right;
-    margin-left: 75%;
+    margin-left: 85%;
+}
+
+.categorytext {
+    font-family: "SF Movie Poster";
+    font-size: 1.8em;
+    margin-bottom: 25%;
 }
 
 
