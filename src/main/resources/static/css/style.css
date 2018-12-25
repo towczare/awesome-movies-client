@@ -37,7 +37,7 @@ audio:not([controls]) {
 }
 
 html {
-    background: #fff;
+    background: #000000;
     color: #000;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -60,21 +60,32 @@ body {
 
 a {
     background: transparent;
+    text-decoration: none;
+    color: #ffaa3c;
+
+}
+
+a:hover {
+    color: #ffeabb;
+    transition: .1s ease-in-out;
+    transition-timing-function: linear;
+    text-shadow: 0 0 8px #ffac00;
+
 }
 
 a:focus {
     outline: thin dotted;
 }
 
-a:hover, a:active {
-    outline: 0;
-}
 
 h1 {
     font-family: "SF Movie Poster";
     src: url("https://www.dafont.com/sf-movie-poster.font");
     font-size: 3.0em;
     /*margin: 0.67em 0;*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h2 {
@@ -85,8 +96,8 @@ h2 {
 }
 
 h3 {
-    font-family: "SF Movie Poster";
-    src: url("https://www.dafont.com/sf-movie-poster.font");
+    /*font-family: "SF Movie Poster";*/
+    /*src: url("https://www.dafont.com/sf-movie-poster.font");*/
     font-size: 2.17em;
     margin: 1em 0;
 }
@@ -99,15 +110,15 @@ h4 {
 }
 
 h5 {
-    font-family: "SF Movie Poster";
-    src: url("https://www.dafont.com/sf-movie-poster.font");
+    /*font-family: "SF Movie Poster";*/
+    /*src: url("https://www.dafont.com/sf-movie-poster.font");*/
     font-size: 1.83em;
     margin: 1.67em 0;
 }
 
 h6 {
-    font-family: "SF Movie Poster";
-    src: url("https://www.dafont.com/sf-movie-poster.font");
+    /*font-family: "Roboto", "Open Sans", sans-serif;*/
+    /*src: url("https://www.dafont.com/sf-movie-poster.font");*/
     font-size: 0.75em;
     margin: 2.33em 0;
 }
@@ -176,7 +187,24 @@ sub {
 
 
 img {
-    border: 0;
+
+    width:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+img:hover {
+
+    width: 110%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    filter:drop-shadow(30px 15px 15px #000000);
+    transition: .2s ease-in-out;
+    transition-timing-function: linear;
 
 }
 
@@ -266,10 +294,10 @@ table {
     border-spacing: 0;
 }
 
-*, *:before, *:after {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+/**, *:before, *:after {*/
+/*-moz-box-sizing: border-box;*/
+/*box-sizing: border-box;*/
+/*}*/
 
 /*
  * Global Styles
@@ -278,7 +306,7 @@ body {
     background-color: #131a20;
     color: #84878d;
     font-family: "Roboto", "Open Sans", sans-serif;
-    font-size: 15px;
+
     font-weight: 400;
     line-height: normal;
     background-image: url("../../images/felix-mooneeram-222805-unsplash.jpg");
@@ -289,7 +317,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
-    margin: 0 0 20px;
+    /*margin: 0 0 20px;*/
 }
 
 hr {
@@ -298,14 +326,11 @@ hr {
 }
 
 ul, ol {
+    list-style-type: none;
     margin: 0;
-    padding-left: 0;
+    padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: #ffaa3c;
-}
 
 address {
     font-style: normal;
@@ -316,10 +341,19 @@ p {
 }
 
 form input, form textarea, form select {
-    color: rgba(255, 255, 255, 0.42);
+    background-color: #f0f8ff00;
+    color: #fff29b;
     outline: none;
-    border: 1px solid #cccccc42;
-    padding: 10px;
+    border: 1px solid rgba(103, 52, 47, 0);
+    padding: 1px;
+    text-shadow: 0 0 15px #ffac00;
+    font-family: "SF Movie Poster";
+    font-size: 4em;
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+
 }
 
 form select {
@@ -332,22 +366,31 @@ form textarea {
     resize: vertical;
 }
 
+li {
+    display: inline;
+    margin-left: 1%;
+    margin-bottom: 5%;
+}
+
+
 /*
  * Reusable Components Style
  */
 .button, form input[type="submit"], form button, form input[type="reset"], .contact-form input[type="submit"] {
     border: none;
-    background: rgba(109, 109, 109, 0.35);
-    padding: 10px;
+    background: rgba(109, 109, 109, 0);
+    /*padding: 10px;*/
     /* border-radius: 3px; */
-    color: #000000;
+    color: #ffaa3c;
     -webkit-transition: .3s ease;
     transition: .3s ease;
+    height: 5%;
 }
 
 
 .button:hover, form input[type="submit"]:hover, form button:hover, form input[type="reset"]:hover, .contact-form input[type="submit"]:hover, .button:focus, form input[type="submit"]:focus, form button:focus, form input[type="reset"]:focus, .contact-form input[type="submit"]:focus {
     background-color: #ffc06f;
+    transition: .3s ease;
 }
 
 .slider {
@@ -358,6 +401,7 @@ form textarea {
 }
 
 .slider .slides {
+    position: relative;
     list-style: none;
     *zoom: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -366,7 +410,7 @@ form textarea {
 .slider .slides:after {
     content: " ";
     clear: both;
-    display: block;
+    display: inline;
     overflow: hidden;
     height: 0;
 }
@@ -378,21 +422,24 @@ form textarea {
 }
 
 .slider img {
-    max-width: 100%;
-    width: 50%;
+    size: co;
+    max-width: 40%;
+    width: 40%;
     height: auto;
-    display: block;
-    overflow: hidden;
-    background-attachment: fixed;
+
+    /*display: block;*/
     margin-left: auto;
     margin-right: auto;
 
+
 }
+
+
 
 .slider .flex-direction-nav {
     list-style: none;
-    z-index: 2;
-    position: absolute;
+    /*z-index: 2;*/
+    /*position: absolute;*/
     top: 45%;
     width: 100%;
 }
@@ -404,17 +451,18 @@ form textarea {
 
     text-align: center;
     line-height: 2.5;
-    font-size: 18px;
+
     font-size: 1.2em;
     display: block;
     position: fixed;
     -webkit-transition: .3s ease;
-    transition: .3s ease;
+    transition: .7s ease-in-out;
 }
 
 .slider .flex-direction-nav a:hover {
     background-color: #ffaa3c;
     color: white;
+    transition: .7s ease-in-out;
 }
 
 .slider .flex-direction-nav .flex-prev {
@@ -764,15 +812,17 @@ ul.arrow li a:hover {
 
 @media (min-width: 992px) {
     .container {
-        width: 970px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
-}
+/*@media (min-width: 1200px) {*/
+/*.container {*/
+/*width: 1170px;*/
+/*}*/
+/*}*/
 
 .container-fluid {
     margin-right: auto;
@@ -791,8 +841,8 @@ ul.arrow li a:hover {
 }
 
 .row {
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: auto;
+    margin-right: auto;
     *zoom: 1;
 
     display: flex;
@@ -2045,20 +2095,23 @@ ul.arrow li a:hover {
 }
 
 .main-navigation .search-form input {
-    background-color: #f0f0f0;
+    background-color: rgba(240, 240, 240, 0.29);
     border: none;
-    border-left: 1px solid #eeeeef;
+    border-left: 1px solid rgba(238, 238, 239, 0.38);
     border-radius: 0;
-    font-family: inherit;
+    font-family: "SF Movie Poster";
     font-weight: 300;
     width: 0;
     visibility: hidden;
-    opacity: 0;
+
     -webkit-transition: .3s ease;
     transition: .3s ease;
     padding: 10px 0;
 }
 
+::placeholder{
+    color: #ffffff;
+}
 .main-navigation .search-form input.active {
     width: 200px;
     visibility: visible;
@@ -2069,7 +2122,7 @@ ul.arrow li a:hover {
 .main-navigation .search-form button {
     background-color: transparent;
     border: none;
-    border-left: 1px solid #eeeeef;
+    border-left: 1px solid rgba(238, 238, 239, 0.55);
     border-radius: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -2082,7 +2135,7 @@ ul.arrow li a:hover {
 }
 
 .main-navigation .search-form button.active {
-    background-color: #f0f0f0;
+    background-color: rgba(240, 240, 240, 0.54);
 }
 
 .mobile-navigation {
@@ -2370,7 +2423,7 @@ ul.arrow li a:hover {
 }
 
 .site-footer a {
-    color: #84878d;
+    color: #8d1407;
     -webkit-transition: .3s ease;
     transition: .3s ease;
 }
@@ -2385,24 +2438,26 @@ ul.arrow li a:hover {
 
 
 .tomovielist {
-    width: 30%;
-    height: 75%;
-    background-color: white;
+
     margin-top: 3%;
     margin-right: auto;
-
+    margin-left: auto;
     text-transform: uppercase;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    display: block;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     max-width: 200px;
-    margin: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.wrap:hover .card {
+    box-shadow: 0 4px 8px 0 rgb(255, 131, 114), 0 6px 20px 0 rgb(255, 255, 255);
+    max-width: 220px;
+    width: 120%;
+    margin: auto;
     text-align: center;
 }
 
@@ -2435,8 +2490,11 @@ ul.arrow li a:hover {
 
 .categorytext {
     font-family: "SF Movie Poster";
-    font-size: 1.8em;
+    font-size: 2.5em;
     margin-bottom: 25%;
+    display: inline;
+
 }
+
 
 

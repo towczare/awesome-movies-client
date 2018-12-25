@@ -18,44 +18,38 @@
 <div id="site-content">
 
     <div class="container">
-        <div class="page-header">
-            <a type="submit" th:href="@{'/'}">
-                <h1 align="center" style="font-size: 10em">Awesome Movies</h1>
-            </a>
-        </div>
+
         <header class="site-header">
-            <div class="tomovielist" >
-                <a type="submit" th:href="@{'/movielist'}">
-                    <h1 align="center">List of all movies</h1>
+            <div class="page-header">
+                <a type="submit" th:href="@{'/'}">
+                    <h1 align="center" style="font-size: 5em">Awesome Movies</h1>
                 </a>
-            </div>
-            <div class="mobile-navigation"></div>
+                <div class="tomovielist">
+                    <a type="submit" th:href="@{'/movielist'}">
+                        <h1 align="center">List of all movies</h1>
+                    </a>
+                    <a type="submit" th:href="@{'/actors'}"><h2 align="center">Actors</h2></a>
+                </div>
         </header>
 
-        <main class="main-content">
+        <div class="slider">
+            <ul class="slides">
+                <li th:each="movie:${movies}">
+                    <a th:href="@{'/movie/'+${movie.id}}">
+                        <img src="movies.html" th:src="${movie.posterLink}" alt="Slide 1">
+                    </a>
+                </li>
 
-                <div class="page">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="slider">
-                                <ul class="slides">
-                                    <li class="" th:each="movie:${movies}">
-                                        <a th:href="@{'/movie/'+${movie.id}}">
-                                            <img th:src="${movie.posterLink}">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </ul>
+        </div>
 
 
-        </main>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/app.js"></script>
     </div>
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/app.js"></script>
+
 </div>
 </body>
+
 </html>
