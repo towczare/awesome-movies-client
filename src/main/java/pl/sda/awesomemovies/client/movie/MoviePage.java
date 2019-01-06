@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class RestResponsePage<T> extends PageImpl<T> {
+public class MoviePage<T> extends PageImpl<T> {
     private int number;
     private int size;
     private int totalPages;
@@ -22,15 +22,15 @@ public class RestResponsePage<T> extends PageImpl<T> {
     private List<T> content;
     private Sort sort;
 
-    public RestResponsePage(List<T> content, Pageable pageable, long total) {
+    public MoviePage(List<T> content, Pageable pageable, long total) {
         super(content, pageable, total);
     }
 
-    public RestResponsePage(List<T> content) {
+    public MoviePage(List<T> content) {
         super(content);
     }
 
-    public RestResponsePage() {
+    public MoviePage() {
         super(new ArrayList<T>());
     }
 }

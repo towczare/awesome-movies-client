@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class FilterCriteria {
+public class MovieFilterCriteria {
     private String name;
     private String category;
 }

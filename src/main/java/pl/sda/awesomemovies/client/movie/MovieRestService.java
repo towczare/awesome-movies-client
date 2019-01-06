@@ -28,8 +28,8 @@ public class MovieRestService {
     }
 
     public Page<Movie> getMovies(Pageable pageable) {
-        ParameterizedTypeReference<RestResponsePage<Movie>> ptr =
-                new ParameterizedTypeReference<RestResponsePage<Movie>>() {
+        ParameterizedTypeReference<MoviePage<Movie>> ptr =
+                new ParameterizedTypeReference<MoviePage<Movie>>() {
                 };
         URI targetUrl = UriComponentsBuilder.fromUriString(endpointUrl)
                 .path("/movies")

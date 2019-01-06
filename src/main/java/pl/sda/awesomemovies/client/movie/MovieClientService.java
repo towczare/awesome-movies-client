@@ -60,11 +60,11 @@ public class MovieClientService {
         return foundMovies;
     }
 
-    public List<Movie> searchForMovies(FilterCriteria filterCriteria) {
+    public List<Movie> searchForMovies(MovieFilterCriteria movieFilterCriteria) {
         List<Movie> foundMovies = new ArrayList<>();
         getAllMovies().stream().filter(e ->
-                e.getTitle().toUpperCase().contains(filterCriteria.getName().toUpperCase())
-                        && e.getCategories().contains(new Category(filterCriteria.getCategory())))
+                e.getTitle().toUpperCase().contains(movieFilterCriteria.getName().toUpperCase())
+                        && e.getCategories().contains(new Category(movieFilterCriteria.getCategory())))
                 .distinct()
                 .forEach(foundMovies::add);
         return foundMovies;
