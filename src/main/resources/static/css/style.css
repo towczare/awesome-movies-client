@@ -303,15 +303,12 @@ table {
  * Global Styles
  */
 body {
-    background-color: #131a20;
     color: #84878d;
     font-family: "Roboto", "Open Sans", sans-serif;
-
     font-weight: 400;
     line-height: normal;
     background-image: url("../../images/felix-mooneeram-222805-unsplash.jpg");
     background-size: 100%;
-    background-repeat: repeat-y;
     margin: 0;
 }
 
