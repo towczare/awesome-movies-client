@@ -1,5 +1,7 @@
 # Awesome Movies - Client
 
+[![CodeFactor](https://www.codefactor.io/repository/github/towczare/awesome-movies-client/badge)](https://www.codefactor.io/repository/github/towczare/awesome-movies-client)
+
 Client for Awesome Movies project. No sexy js framework but, hey this is Java bootcamp!
 
 [Live demo](https://awesome-movies-client.herokuapp.com/)
@@ -27,7 +29,7 @@ To run application with `dev` profile:
 java -jar target/awesome-movies-client-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
 
-### Acessing babun terminal via InteliJ
+### Accessing babun terminal via IntelliJ
 1. Edit/Create following file `embed.bat` located `C:\Users\tomic\.babun`
 ```
 @echo off
@@ -38,4 +40,5 @@ chdir C:\Users\tomic\.babun\cygwin\bin
 bash --login -i
 ```
 2. Set terminal to call embed.bat file
+
 ![GitHub Logo](/images/babun3.png)

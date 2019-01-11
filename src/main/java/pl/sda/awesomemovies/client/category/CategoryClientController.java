@@ -14,11 +14,10 @@ import java.util.List;
 
 @Controller
 public class CategoryClientController {
-
     private final CategoryClientService categoryClientService;
     private final MovieClientService movieClientService;
-
     private static final String MOVIES_BY_CATEGORY = "movie-list";
+
 
     @Autowired
     public CategoryClientController(CategoryClientService categoryClientService, MovieClientService movieClientService) {

@@ -1,6 +1,9 @@
 package pl.sda.awesomemovies.client.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,10 +11,10 @@ import pl.sda.awesomemovies.client.category.Category;
 import pl.sda.awesomemovies.client.category.CategoryClientService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MovieClientController {
-
     private final MovieClientService movieClientService;
     private final CategoryClientService categoryClientService;
 
@@ -38,8 +41,9 @@ public class MovieClientController {
     }
 
     @RequestMapping({"/movielist"})
-    public String getMovieList(Model model) {
-        model.addAttribute("movies", movieClientService.getAllMovies());
+    public String getMovieList(Pageable pageable, Model model) {
+        Page<Movie> allMovies = movieClientService.getAllMovies(pageable);
+        model.addAttribute("movies", allMovies.getContent());
         model.addAttribute("filterCriteria", new FilterCriteria());
         return MOVIE_LIST;
     }
@@ -64,7 +68,7 @@ public class MovieClientController {
     }
 
     @PostMapping("/advancedSearch")
-    public String searchForMovies(@ModelAttribute FilterCriteria filterCriteria, Model model) {
+    public String searchForMovies(@ModelAttribute FilterCriteria filterCriteria, Model model){
         List<Movie> movies = movieClientService.searchForMovies(filterCriteria);
         model.addAttribute("movies", movies);
         return MOVIES_VIEW;
