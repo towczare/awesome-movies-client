@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Movie Trends</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+</header>
+<div class="container">
+    <div class="page-header">
+        <h1>Movie Trends</h1>
+    </div>
+
+    <div class="row">
+        <div class="container">
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm6" th:each="trend:${trends.results}">
+                <div class="card">
+                    <img th:src="'http://image.tmdb.org/t/p/w185/'+${trend.posterPath}" style="width:100%">
+                    <h4><span th:text="${trend.title}">#movieName</span></h4>
+                    <p><span class="badge" th:text="${trend.voteAverage}+'/10 '+'('+${trend.voteCount}+' votes)'">8.6/10</span></p>
+                </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

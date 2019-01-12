@@ -17,9 +17,15 @@ These instructions will get you a copy of the project up and running on your loc
 ./mvnw clean install 
 ```
 ### Run local version
-Configuration is stored in common file located:
+
+1. Create account on [The Movie DB](https://www.themoviedb.org) to get access to open movie API.
+2. Add new environment variable `THE_MOVIE_DB_API_KEY` representing `api_key` example:
+```
+THE_MOVIE_DB_API_KEY=mysecretapikey12345
+```
+3. All configurations are stored in common file located:
 `awesome-movies-client\src\main\resources\application.properties`
-to run application use following command:
+4. To run application use following command:
 ```
 java -jar target/awesome-movies-client-0.0.1-SNAPSHOT.jar
 ```

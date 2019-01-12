@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.sda.awesomemovies.client.movie.FilterCriteria;
+import pl.sda.awesomemovies.client.movie.MovieFilterCriteria;
 import pl.sda.awesomemovies.client.movie.Movie;
 import pl.sda.awesomemovies.client.movie.MovieClientService;
 
@@ -32,7 +32,7 @@ public class CategoryClientController {
 
     @RequestMapping("/categories/{name}")
     public String showMovieDetails(@PathVariable String name, Model model) {
-        FilterCriteria categoryFilter = new FilterCriteria();
+        MovieFilterCriteria categoryFilter = new MovieFilterCriteria();
         categoryFilter.setName("");
         categoryFilter.setCategory(name);
         List<Movie> movies = movieClientService.searchForMovies(categoryFilter);

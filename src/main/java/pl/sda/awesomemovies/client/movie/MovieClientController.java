@@ -1,7 +1,6 @@
 package pl.sda.awesomemovies.client.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import pl.sda.awesomemovies.client.category.Category;
 import pl.sda.awesomemovies.client.category.CategoryClientService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class MovieClientController {
@@ -36,7 +34,7 @@ public class MovieClientController {
     @RequestMapping({"/"})
     public String getMoviesView(Model model){
         model.addAttribute("movies", movieClientService.getAllMovies());
-        model.addAttribute("filterCriteria", new FilterCriteria());
+        model.addAttribute("filterCriteria", new MovieFilterCriteria());
         return MOVIES_VIEW;
     }
 
@@ -44,7 +42,7 @@ public class MovieClientController {
     public String getMovieList(Pageable pageable, Model model) {
         Page<Movie> allMovies = movieClientService.getAllMovies(pageable);
         model.addAttribute("movies", allMovies.getContent());
-        model.addAttribute("filterCriteria", new FilterCriteria());
+        model.addAttribute("filterCriteria", new MovieFilterCriteria());
         return MOVIE_LIST;
     }
 
@@ -63,13 +61,13 @@ public class MovieClientController {
 
     @GetMapping("/advancedSearch")
     public String searchForMoviesForm(Model model) {
-        model.addAttribute("filterCriteria", new FilterCriteria());
+        model.addAttribute("filterCriteria", new MovieFilterCriteria());
         return MOVIES_SEARCH;
     }
 
     @PostMapping("/advancedSearch")
-    public String searchForMovies(@ModelAttribute FilterCriteria filterCriteria, Model model){
-        List<Movie> movies = movieClientService.searchForMovies(filterCriteria);
+    public String searchForMovies(@ModelAttribute MovieFilterCriteria movieFilterCriteria, Model model){
+        List<Movie> movies = movieClientService.searchForMovies(movieFilterCriteria);
         model.addAttribute("movies", movies);
         return MOVIES_VIEW;
     }
