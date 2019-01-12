@@ -1,7 +1,6 @@
 package pl.sda.awesomemovies.client.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -11,17 +10,21 @@ import pl.sda.awesomemovies.client.category.Category;
 import pl.sda.awesomemovies.client.category.CategoryClientService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class MovieClientController {
     private final MovieClientService movieClientService;
     private final CategoryClientService categoryClientService;
 
-    private static final String MOVIE_LIST = "movie-list";
+    private static final String CATEGORIES_MODEL = "categories";
+    private static final String MOVIES_MODEL = "movies";
+    private static final String FILTER_CRITERIA_MODEL = "filterCriteria";
+    private static final String MOVIE_MODEL = "movie";
+
+    private static final String MOVIE_LIST_VIEW = "movie-list-view";
     private static final String MOVIE_DETAILS_VIEW = "movie-details-view";
-    private static final String MOVIES_VIEW = "movies";
-    private static final String MOVIES_SEARCH = "movie-search";
+    private static final String MOVIES_VIEW = "movies-view";
+    private static final String MOVIES_SEARCH_VIEW = "movie-search-view";
 
     @Autowired
     public MovieClientController(MovieClientService movieClientService, CategoryClientService categoryClientService) {
@@ -29,48 +32,49 @@ public class MovieClientController {
         this.categoryClientService = categoryClientService;
     }
 
-    @ModelAttribute("categories")
+    @ModelAttribute(CATEGORIES_MODEL)
     public List<Category> categories() {
         return categoryClientService.getAllCategories();
     }
+
     @RequestMapping({"/"})
     public String getMoviesView(Model model){
-        model.addAttribute("movies", movieClientService.getAllMovies());
-        model.addAttribute("filterCriteria", new FilterCriteria());
+        model.addAttribute(MOVIES_MODEL, movieClientService.getAllMovies());
+        model.addAttribute(FILTER_CRITERIA_MODEL, new FilterCriteria());
         return MOVIES_VIEW;
     }
 
     @RequestMapping({"/movielist"})
     public String getMovieList(Pageable pageable, Model model) {
         Page<Movie> allMovies = movieClientService.getAllMovies(pageable);
-        model.addAttribute("movies", allMovies.getContent());
-        model.addAttribute("filterCriteria", new FilterCriteria());
-        return MOVIE_LIST;
+        model.addAttribute(MOVIES_MODEL, allMovies.getContent());
+        model.addAttribute(FILTER_CRITERIA_MODEL, new FilterCriteria());
+        return MOVIE_LIST_VIEW;
     }
 
     @RequestMapping("/movie/{id}")
     public String showMovieDetails(@PathVariable String id, Model model) {
-        model.addAttribute("movie", movieClientService.getMovie(Long.valueOf(id)));
+        model.addAttribute(MOVIE_MODEL, movieClientService.getMovie(Long.valueOf(id)));
         return MOVIE_DETAILS_VIEW;
     }
 
     @PostMapping("/filterMovies")
     public String filterMovies(@RequestParam String searchName, Model model) {
         List<Movie> filteredMovies = movieClientService.filterMovies(searchName);
-        model.addAttribute("movies", filteredMovies);
-        return MOVIE_LIST;
+        model.addAttribute(MOVIES_MODEL, filteredMovies);
+        return MOVIE_LIST_VIEW;
     }
 
     @GetMapping("/advancedSearch")
     public String searchForMoviesForm(Model model) {
-        model.addAttribute("filterCriteria", new FilterCriteria());
-        return MOVIES_SEARCH;
+        model.addAttribute(FILTER_CRITERIA_MODEL, new FilterCriteria());
+        return MOVIES_SEARCH_VIEW;
     }
 
     @PostMapping("/advancedSearch")
     public String searchForMovies(@ModelAttribute FilterCriteria filterCriteria, Model model){
         List<Movie> movies = movieClientService.searchForMovies(filterCriteria);
-        model.addAttribute("movies", movies);
+        model.addAttribute(MOVIES_MODEL, movies);
         return MOVIES_VIEW;
     }
 }
