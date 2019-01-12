@@ -1,7 +1,6 @@
 package pl.sda.awesomemovies.client.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.sda.awesomemovies.client.category.Category;
 import pl.sda.awesomemovies.client.category.CategoryClientService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,7 +63,12 @@ public class MovieClientController {
 
     @GetMapping("/advancedSearch")
     public String searchForMoviesForm(Model model) {
+        List<String> categoryNames =  categoryClientService.getAllCategories()
+                .stream()
+                .map(Category::getName)
+                .collect(Collectors.toList());
         model.addAttribute("filterCriteria", new FilterCriteria());
+        model.addAttribute("categoryNames", categoryNames);
         return MOVIES_SEARCH;
     }
 
