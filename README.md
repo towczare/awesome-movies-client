@@ -1,5 +1,7 @@
 # Awesome Movies - Client
 
+[![CodeFactor](https://www.codefactor.io/repository/github/towczare/awesome-movies-client/badge)](https://www.codefactor.io/repository/github/towczare/awesome-movies-client)
+
 Client for Awesome Movies project. No sexy js framework but, hey this is Java bootcamp!
 
 [Live demo](https://awesome-movies-client.herokuapp.com/)
