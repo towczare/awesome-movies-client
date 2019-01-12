@@ -27,16 +27,20 @@ public class Movie {
     private Integer thumbUp;
     private Integer thumbDown;
 
-    public Double thumbUpPercentage(){
-        int sum = thumbUp + thumbDown;
-        return Double.valueOf(thumbUp*100 / sum);
-
+    public Double thumbUpPercentage(int thumbUp, int thumbDown) {
+        return getPercentage(thumbUp, thumbDown);
     }
 
-    public Double thumbDownPercentage(){
+    private Double getPercentage(int thumbUp, int thumbDown) {
         int sum = thumbUp + thumbDown;
-      return Double.valueOf(thumbDown *100/sum);
+        if (sum == 0) {
+            return Double.valueOf(0);
+        } else {
+            return Double.valueOf(100 / sum);
+        }
     }
 
-
+    public Double thumbDownPercentage(int thumbUp, int thumbDown) {
+        return getPercentage(thumbUp, thumbDown);
+    }
 }
