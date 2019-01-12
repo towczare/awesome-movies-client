@@ -61,7 +61,7 @@
         <div th:each="movie:${movies}">
             <a th:href="@{'/movie/'+${movie.id}}">
                 <div class="card">
-                    <img th:src="${movie.posterLink}" >
+                    <img class="image_button" th:src="${movie.posterLink}" >
 
                 </div>
             </a>

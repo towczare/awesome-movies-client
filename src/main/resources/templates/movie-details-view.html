@@ -23,42 +23,64 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <h5>Categories:</h5>
+                                <h4>Categories:</h4>
                                 <ul th:each="category:${movie.categories}">
-                                    <li th:text="${category.name}"></li>
+                                    <li th:text="${category.name}" style="font-family: 'SF Movie Poster'; font-size: 4em"></li>
                                 </ul>
                             </div>
                             <div class="col-md-2 offset-md-4">
-                                <h5>Image: </h5>
+                                <h4>Image: </h4>
                                 <div class="col-md-2 offset-md-4">
-                                    <div class="card" style="height:50%">
-                                        <img src="#" th:src="${movie.posterLink}">
+                                    <div class="card" >
+                                        <img th:src="${movie.posterLink}" style="width: 400px">
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Actors</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h2>Director:
+                                            <span th:text="${movie.director}">Director</span>
+                                        </h2>
+                                        <div class="col-md-6">
+                                            <ul>
+                                                <li th:remove="all">Bruce Willis</li>
+                                                <li th:remove="all">Salma Hayek</li>
+                                                <!--<li th:each="actor : ${movie.actors}" th:text="${actor.title}">Chuck Norris</li>-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Actors</h1>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Director:
-                                    <span th:text="${movie.director}">Director</span>
-                                </h5>
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li th:remove="all">Bruce Willis</li>
-                                        <li th:remove="all">Salma Hayek</li>
-                                        <!--<li th:each="actor : ${movie.actors}" th:text="${actor.title}">Chuck Norris</li>-->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="panel-heading">-->
+                        <!--<h2 class="panel-title">Actors</h2>-->
+                    <!--</div>-->
+                    <!--<div class="panel-body">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-3">-->
+                                <!--<h2>Director:-->
+                                    <!--<span th:text="${movie.director}">Director</span>-->
+                                <!--</h2>-->
+                                <!--<div class="col-md-6">-->
+                                    <!--<ul>-->
+                                        <!--<li th:remove="all">Bruce Willis</li>-->
+                                        <!--<li th:remove="all">Salma Hayek</li>-->
+                                        <!--&lt;!&ndash;<li th:each="actor : ${movie.actors}" th:text="${actor.title}">Chuck Norris</li>&ndash;&gt;-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h1 class="panel-title">Trailer</h1>
@@ -89,7 +111,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
