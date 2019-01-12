@@ -21,7 +21,6 @@
             </div>
             <div class="panel-body">
                 <form th:action="@{/advancedSearch}" th:object="${filterCriteria}" method="post">
-
                     <table class="table">
                         <tbody>
                         <tr>
@@ -30,15 +29,13 @@
                         </tr>
                         <tr>
                             <td><label>Movie category: </label></td>
-                            <td><select name="text" th:field="*{category}">
-                                <option value="komedia">Komedia</option>
-                                <option value="horror">Horror</option>
-                                <option value="akcja">Akcja</option>
-                                <option value="thriller">Thriller</option>
-                                <option value="bajka">Bajka</option>
-                                <option value="dramat">Dramat</option>
-                                <option value="SCI-FI">SCI-FI</option>
-                            </select></td>
+                        <td><select th:field="*{category}">
+                            <option th:each="categortName : ${categoryNames}"
+                                    th:value="${categortName}"
+                                    th:text="${categortName}">
+                            </option>
+                        </select>
+                        </td>
                         </tr>
                         </tbody>
                     </table>
