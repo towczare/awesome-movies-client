@@ -1,5 +1,6 @@
 package pl.sda.awesomemovies.client.movie;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@Slf4j
 public class MovieClientService {
     private MovieRestService movieRestService;
 
@@ -33,7 +35,7 @@ public class MovieClientService {
             );
             return Arrays.asList(getMovies);
         } catch (RestClientException e) {
-            e.printStackTrace();
+            log.error("Could not get movies from service. Returning empty list. {}", e);
             return Collections.emptyList();
         }
     }
@@ -45,7 +47,7 @@ public class MovieClientService {
                     Movie.class
             );
         } catch (RestClientException e) {
-            e.printStackTrace();
+            log.error("Could not get single movie of id {} from service. {}", id, e);
             return new Movie();
         }
     }
