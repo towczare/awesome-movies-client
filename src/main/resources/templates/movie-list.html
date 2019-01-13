@@ -45,18 +45,27 @@
 
 
         <ul class="categorytext">
-            <li th:each="category:${categories}" th:action="@{/filterMovies}" method="post">
-                <a th:href="@{'/categories/'+${category.name}}" th:text="${category.name}">#categoryName</a>
+            <li th:each="category:${categories}" th:action="@{/movieList}" method="get">
+                <a th:href="@{'?category='+${category.name}}" th:text="${category.name}">#categoryName</a>
             </li>
         </ul>
     </div>
 </div>
 
 <div class="container">
-    <form action="#" th:action="@{/filterMovies}" method="post">
-        <input type="text"  th:value="${String}" name="searchName" placeholder="Filter by title..."/>
-        <!--<button type="submit" class="btn btn-info btn-xs">Filter Movies</button>-->
-    </form>
+    <div class="row">
+        <div class="container" >
+            <div class="col-lg-4">
+                <form action="#" th:action="@{/movielist}" method="get">
+                    <input type="text" th:value="${String}" name="title" placeholder="Filter by title..."/>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <form action="#" th:action="@{/movielist}" method="get">
+                    <input type="text" th:value="${String}" name="actor" placeholder="Filter by actor..."/>
+                </form></div>
+        </div>
+    </div>
     <div class="row">
         <div th:each="movie:${movies}">
             <a th:href="@{'/movie/'+${movie.id}}">
