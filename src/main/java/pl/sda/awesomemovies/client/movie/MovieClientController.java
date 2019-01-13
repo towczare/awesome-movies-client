@@ -3,6 +3,7 @@ package pl.sda.awesomemovies.client.movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,19 +33,29 @@ public class MovieClientController {
         return categoryClientService.getAllCategories();
     }
     @RequestMapping({"/"})
-    public String getMoviesView(Model model){
+    public String getMoviesView(Model model) {
         model.addAttribute("movies", movieClientService.getAllMovies());
         model.addAttribute("filterCriteria", new MovieFilterCriteria());
         return MOVIES_VIEW;
     }
 
     @RequestMapping({"/movielist"})
-    public String getMovieList(Pageable pageable, Model model) {
-        Page<Movie> allMovies = movieClientService.getAllMovies(pageable);
-        model.addAttribute("allPages", allMovies.getTotalPages());
-        model.addAttribute("page", pageable.getPageNumber());
+    public String getMovieList(Pageable pageable,
+                               Model model,
+                               @Param("title") String title,
+                               @Param("actor") String actor,
+                               @Param("category") String category
+    ) {
+        MovieFilterCriteria movieFilterCriteria = new MovieFilterCriteria();
+        movieFilterCriteria.setName(title);
+        movieFilterCriteria.setCategory(category);
+        movieFilterCriteria.setActor(actor);
+        model.addAttribute("movieFilterCriteria", movieFilterCriteria);
+
+        Page<Movie> allMovies = movieClientService.getAllMovies(pageable, model);
         model.addAttribute("movies", allMovies.getContent());
-        model.addAttribute("filterCriteria", new MovieFilterCriteria());
+            model.addAttribute("allPages", allMovies.getTotalPages());
+            model.addAttribute("page", pageable.getPageNumber());
         return MOVIE_LIST;
     }
 
@@ -68,7 +79,7 @@ public class MovieClientController {
     }
 
     @PostMapping("/advancedSearch")
-    public String searchForMovies(@ModelAttribute MovieFilterCriteria movieFilterCriteria, Model model){
+    public String searchForMovies(@ModelAttribute MovieFilterCriteria movieFilterCriteria, Model model) {
         List<Movie> movies = movieClientService.searchForMovies(movieFilterCriteria);
         model.addAttribute("movies", movies);
         return MOVIES_VIEW;
