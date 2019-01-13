@@ -17,7 +17,7 @@ public class MovieTrendRestService {
     private final RestTemplate restTemplate;
     @Value("${themoviedb.endpoint.url}")
     private String endpointUrl;
-    @Value("${themoviedb.api.key}")
+    @Value("${the.movie.db.api.key:123}")
     private String apiKey;
 
     @Autowired

@@ -41,6 +41,8 @@ public class MovieClientController {
     @RequestMapping({"/movielist"})
     public String getMovieList(Pageable pageable, Model model) {
         Page<Movie> allMovies = movieClientService.getAllMovies(pageable);
+        model.addAttribute("allPages", allMovies.getTotalPages());
+        model.addAttribute("page", pageable.getPageNumber());
         model.addAttribute("movies", allMovies.getContent());
         model.addAttribute("filterCriteria", new MovieFilterCriteria());
         return MOVIE_LIST;
