@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.sda.awesomemovies.client.actor.Actor;
 import pl.sda.awesomemovies.client.category.Category;
 
 import java.util.Set;
@@ -26,6 +27,8 @@ public class Movie {
     private Double criticsRate;
     private Integer thumbUp;
     private Integer thumbDown;
+    private Set<Actor> actors;
+    private String overview;
 
     public Double thumbUpPercentage() {
         return getPercentage(thumbUp, thumbDown);

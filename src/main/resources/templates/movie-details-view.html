@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/ie-support/html5.js"></script>
     <script src="js/ie-support/respond.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
@@ -17,84 +17,83 @@
 <body>
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-lg-6 col-md-offset-2">
             <div class="pannel-group">
                 <div class="panel panel-primary">
                     <a th:href="@{/}" style="font-family: 'SF Movie Poster'; font-size: 4em">Back to main page</a>
                     <div class="panel-heading">
-                        <h1 class="panel-title" th:text="${movie.title}">Really awesome movie!</h1>
+                        <h1 class="panel-title" align="center" th:text="${movie.title}">Really awesome movie!</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-lg-6">
                                 <h5>Categories:</h5>
                                 <ul th:each="category:${movie.categories}">
                                     <li th:text="${category.name}"></li>
                                 </ul>
+                                <h5>Critics rate:</h5>
+                                <span id="rating" style="font-size: 28px;" th:text="${movie.criticsRate}"></span>/10
+                                <h5>Rate:</h5>
+                                <button style="color: green">Like <span
+                                        th:text="${movie.thumbUp} "></span><i class="fa fa-thumbs-up">
+                                </i></button>
+                                <button style="color: red">Dislike <span
+                                        th:text="${movie.thumbDown} "></span><i class="fa fa-thumbs-down">
+                                </i></button>
                             </div>
-                            <div class="col-md-2 offset-md-4">
+                            <div class="col">
+                                <div class="col offset-md-4">
+                                    <img th:src=@{${movie.posterLink}}>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                                <h5>Image: </h5>
-                                <div class="col-md-2 offset-md-4">
-                                    <div class="card" style="height:50%">
-                                        <img src="#" th:src="${movie.posterLink}">
+                    <div class="row">
+                        <h5>Users rate:</h5></div>
+
+                    <div class="w3-light-grey w3-round-xlarge">
+                        <div class="w3-container w3-green w3-round-xlarge" style="width:25%">Like % <span
+                                th:text="${movie.thumbUpPercentage()}"></span></div>
+                    </div>
+                    <br>
+                    <div class="w3-light-grey w3-round-xlarge">
+                        <div class="w3-container w3-red w3-round-xlarge" style="width:25%">Dislike % <span
+                                th:text="${movie.thumbDownPercentage()}"></span></div>
+                    </div>
+
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5>Actors:</h5>
+                                <li th:each="actor : ${movie.actors}" th:text="${actor.name}+' '+${actor.surname}">Chuck
+                                    Norris
+                                </li>
+                            </div>
+
+                            <div class="col offset-md-4">
+                                <div class="row">
+                                    <h5>Director: </h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col offset-md-4">
+                                        <span th:text="${movie.director}">Director</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="w3-light-grey w3-round-xlarge">
-                    <div class="w3-container w3-green w3-round-xlarge" style="width:25%">Like % <span th:text="${movie.thumbUpPercentage()}"></span></div>
-                </div>
-                <br>
-                <div class="w3-light-grey w3-round-xlarge">
-                    <div class="w3-container w3-red w3-round-xlarge" style="width:25%">Dislike % <span th:text="${movie.thumbDownPercentage()}"></span></div>
-                </div>
-                <div>
-                    <br>
-                    <button style="color: green">Like <span th:text="${movie.thumbUp} "></span><i class="fa fa-thumbs-up">
-                    </i></button>
-                    &ensp;
-                    <button style="color: red">Dislike <span th:text="${movie.thumbDown} "></span><i class="fa fa-thumbs-down">
-
-                    </i></button>
-                </div>
-                &ensp;
-
-
-
-
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Critics rating</h1>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span id="rating" style="font-size: 28px;" th:text="${movie.criticsRate}"></span>/10
-                            </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Description</h1>
                         </div>
-                    </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Actors</h1>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Director:
-                                    <span th:text="${movie.director}">Director</span>
-                                </h5>
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li th:remove="all">Bruce Willis</li>
-                                        <li th:remove="all">Salma Hayek</li>
-                                        <!--<li th:each="actor : ${movie.actors}" th:text="${actor.title}">Chuck Norris</li>-->
-                                    </ul>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p th:text="${movie.overview}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor turpis id imperdiet malesuada. Integer tellus elit, efficitur porta urna non, varius interdum risus. Curabitur at mauris urna. Donec sit amet turpis magna. Donec iaculis vestibulum euismod. Phasellus est leo, eleifend eget lacus nec, eleifend finibus mi. Praesent sit amet quam risus. Nam gravida nibh eu tellus venenatis scelerisque. Fusce dignissim dapibus tellus a imperdiet. Maecenas maximus tellus in erat pharetra, at vulputate est ornare. Vestibulum fringilla lobortis nisl, ac egestas quam.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -112,24 +111,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">Description</h1>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <!--<p th:text="${movie.description}">-->
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                    elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem.
-                                    <!--</p>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
