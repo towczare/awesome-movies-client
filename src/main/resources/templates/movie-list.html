@@ -59,6 +59,7 @@
     </form>
     <div class="row">
         <div th:each="movie:${movies}">
+
             <a th:href="@{'/movie/'+${movie.id}}">
                 <div class="card">
                     <img th:src="${movie.posterLink}" >
@@ -71,9 +72,9 @@
 <div style="padding-top: 60px; padding-bottom: 40px">
 <ul th:if="${allPages > 0}" class="pagination">
     <li
-    th:each="i : ${#numbers.sequence( 0, allPages)}" >
+    th:each="i : ${#numbers.sequence( 0, allPages - 1)}" >
     <a th:href="@{'/movielist?page='+${i}}+'&size=10'"
-       th:text="${i}"></a>
+       th:text="${i+1}"></a>
     </li>
 
 </ul>
