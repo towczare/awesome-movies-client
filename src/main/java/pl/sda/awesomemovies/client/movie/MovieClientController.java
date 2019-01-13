@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class MovieClientController {
     }
 
     @RequestMapping({"/movielist"})
-    public String getMovieList(Pageable pageable,
+    public String getMovieList(@PageableDefault (value = 10) Pageable pageable,
                                Model model,
                                @Param("title") String title,
                                @Param("actor") String actor,
